@@ -1,0 +1,7 @@
+/.gradle/                                                                                                                                                                             
+/app/.cxx/                                                                                                                                                                           
+/app/build/                                                                                                                                                                          
+/.idea/                                                                                                                                                                              
+/local.properties 
+legacy_whisper/
+whisper.tflite

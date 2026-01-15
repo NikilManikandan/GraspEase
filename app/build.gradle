@@ -1,0 +1,104 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+}
+
+def localProps = new Properties()
+def localPropsFile = rootProject.file("local.properties")
+if (localPropsFile.exists()) {
+    localProps.load(new FileInputStream(localPropsFile))
+}
+def cloudSttApiKey = (project.findProperty("CLOUD_STT_API_KEY") ?: localProps.getProperty("CLOUD_STT_API_KEY") ?: "")
+def cloudSttBearer = (project.findProperty("CLOUD_STT_BEARER") ?: localProps.getProperty("CLOUD_STT_BEARER") ?: "")
+def cloudSttTokenEndpoint = (project.findProperty("CLOUD_STT_TOKEN_ENDPOINT") ?: localProps.getProperty("CLOUD_STT_TOKEN_ENDPOINT") ?: "")
+
+android {
+    namespace "com.graspease.dev"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.graspease.dev"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            buildConfigField "String", "CLOUD_STT_API_KEY", "\"${cloudSttApiKey}\""
+            buildConfigField "String", "CLOUD_STT_BEARER", "\"${cloudSttBearer}\""
+            buildConfigField "String", "CLOUD_STT_TOKEN_ENDPOINT", "\"${cloudSttTokenEndpoint}\""
+        }
+        debug {
+            buildConfigField "String", "CLOUD_STT_API_KEY", "\"${cloudSttApiKey}\""
+            buildConfigField "String", "CLOUD_STT_BEARER", "\"${cloudSttBearer}\""
+            buildConfigField "String", "CLOUD_STT_TOKEN_ENDPOINT", "\"${cloudSttTokenEndpoint}\""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+kotlinOptions {
+    jvmTarget = "17"
+}
+
+buildFeatures {
+    compose true
+    buildConfig true
+}
+
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.5.11"
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/INDEX.LIST"
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path file("src/main/jni/tflite/CMakeLists.txt")
+        }
+    }
+}
+
+dependencies {
+    implementation platform("com.google.cloud:libraries-bom:26.36.0")
+    implementation platform("androidx.compose:compose-bom:2024.04.01")
+    implementation "androidx.compose.ui:ui"
+    implementation "androidx.compose.ui:ui-graphics"
+    implementation "androidx.compose.ui:ui-tooling-preview"
+    implementation "androidx.compose.material3:material3"
+    implementation "androidx.compose.material:material-icons-extended"
+
+    implementation "androidx.activity:activity-compose:1.9.2"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.4"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4"
+    implementation "androidx.core:core-ktx:1.13.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
+    implementation "com.squareup.okhttp3:okhttp:4.12.0"
+    implementation "io.grpc:grpc-okhttp:1.62.2"
+    implementation "io.grpc:grpc-protobuf:1.62.2"
+    implementation "io.grpc:grpc-stub:1.62.2"
+    implementation "com.google.api.grpc:grpc-google-cloud-speech-v2"
+    implementation "com.google.android.material:material:1.12.0"
+    implementation "org.tensorflow:tensorflow-lite:2.11.0"
+
+    debugImplementation "androidx.compose.ui:ui-tooling"
+    debugImplementation "androidx.compose.ui:ui-test-manifest"
+}
