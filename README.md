@@ -3,6 +3,11 @@ An Indigenous, Low-Cost Active Wrist-Hand Orthosis for Rehabilitation
 
 # Affordable Wrist–Hand Orthosis for Functional Grasp + Rehab
 
+# Branches of this repository:
+1. main - contains the Arduino IDE codes for the functioning of the ESP32 dev boards.
+2. android-app - contains the Android dev files for the **GraspEase App** and the apk (path: app/build/outputs/apk/debug/app-debug_21_final.apk in the android-app branch).
+3. rehab-game - contains the script for gamified rehabilitation **mult.py** and its requirements.txt file. 
+
 ## Overview
 This project aims to develop an **affordable, user-centric wrist–hand orthosis** that helps users **restore functional grasp, hold, and release** while also **promoting rehabilitation and independence**. The solution is designed to be **accessible**, **scalable**, and **cost-effective**—positioning it as an alternative to high-cost robotic rehabilitation systems.
 
