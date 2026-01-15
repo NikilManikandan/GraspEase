@@ -35,14 +35,8 @@ This approach ensures the system can be configured for **individual needs**, imp
 
 ---
 
-## Application Layer (Flutter + Google Technologies)
-The system includes a **Flutter-based application** that provides a smooth **cross-platform interface** (Android/iOS-ready and extensible). The app is designed to be intuitive for daily use while supporting rehabilitation workflows.
-
-### AI-Enabled Motion Visualization
-The application supports **AI-enabled motion visualization** for:
-- **Real-time tracking of hand movement**
-- Monitoring **rehabilitation progress**
-- Enabling data-driven feedback for therapy improvement
+## Application Layer (Android + Google Technologies)
+The system includes a **Android-based application**, designed to be intuitive for daily use while supporting rehabilitation workflows.
 
 ---
 
