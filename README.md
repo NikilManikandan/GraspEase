@@ -79,7 +79,4 @@ Many existing robotic rehabilitation systems are effective but often **expensive
 - Progress tracking via motion visualization  
 - Rehab and gamified therapy modes for engagement
 
-**Cross-Platform UI**
-- Flutter app interface integrated with Google technologies
-
 ---
