@@ -17,7 +17,7 @@ This project aims to develop an **affordable, user-centric wrist–hand orthosis
 - Enable **functional hand actions**: *grasp → hold → release*
 - Support **rehabilitation** through structured therapy and progress tracking
 - Provide **multi-modal control** so users with different mobility levels can operate the device comfortably
-- Deliver a **cross-platform, user-friendly app experience**
+- Deliver a **user-friendly app experience**
 - Improve accessibility using **hands-free interaction** where needed
 
 ---
